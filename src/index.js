@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {ScriptCache} from './lib/ScriptCache';
-import GoogleApi from './lib/GoogleApi';
+import { ScriptCache } from '../lib/ScriptCache';
+import MapApis from './lib/MapApis';
+
+import _Map from './components/Map';
 
 const defaultMapConfig = {};
 
@@ -20,7 +22,7 @@ const defaultCreateCache = options => {
   const region = options.region;
 
   return ScriptCache({
-    google: GoogleApi({
+    google: MapApis({
       apiKey: apiKey,
       language: language,
       libraries: libraries,
@@ -33,6 +35,8 @@ const defaultCreateCache = options => {
 };
 
 const DefaultLoadingContainer = props => <div>Loading...</div>;
+
+export const Map = _Map;
 
 export const GoogleMapApis = input => GoogleMapApiComponent => {
   class GoogleMapApi extends React.Component {
@@ -103,11 +107,11 @@ export const GoogleMapApis = input => GoogleMapApiComponent => {
     onLoad(err, tag) {
       this._gapi = window.google;
 
-      this.setState({loaded: true, google: this._gapi});
+      this.setState({ loaded: true, google: this._gapi });
     }
 
     render() {
-      const {LoadingContainer} = this;
+      const { LoadingContainer } = this;
       if (!this.state.loaded) {
         return <LoadingContainer />;
       }

@@ -1,4 +1,4 @@
-export const GoogleApi = function(opts) {
+export const MapApis = function(opts) {
     opts = opts || {};
   
     if (!opts.hasOwnProperty('apiKey')) {
@@ -46,4 +46,4 @@ export const GoogleApi = function(opts) {
     return url();
   };
   
-  export default GoogleApi;
+  export default MapApis;

@@ -1,28 +1,30 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', 'react', 'react-dom', './lib/ScriptCache', './lib/GoogleApi'], factory);
+    define(['exports', 'react', 'react-dom', '../lib/ScriptCache', './lib/MapApis', './components/Map'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('react'), require('react-dom'), require('./lib/ScriptCache'), require('./lib/GoogleApi'));
+    factory(exports, require('react'), require('react-dom'), require('../lib/ScriptCache'), require('./lib/MapApis'), require('./components/Map'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.react, global.reactDom, global.ScriptCache, global.GoogleApi);
+    factory(mod.exports, global.react, global.reactDom, global.ScriptCache, global.MapApis, global.Map);
     global.index = mod.exports;
   }
-})(this, function (exports, _react, _reactDom, _ScriptCache, _GoogleApi) {
+})(this, function (exports, _react, _reactDom, _ScriptCache, _MapApis, _Map2) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.GoogleMapApis = undefined;
+  exports.GoogleMapApis = exports.Map = undefined;
 
   var _react2 = _interopRequireDefault(_react);
 
   var _reactDom2 = _interopRequireDefault(_reactDom);
 
-  var _GoogleApi2 = _interopRequireDefault(_GoogleApi);
+  var _MapApis2 = _interopRequireDefault(_MapApis);
+
+  var _Map3 = _interopRequireDefault(_Map2);
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
@@ -98,7 +100,7 @@
     var region = options.region;
 
     return (0, _ScriptCache.ScriptCache)({
-      google: (0, _GoogleApi2.default)({
+      google: (0, _MapApis2.default)({
         apiKey: apiKey,
         language: language,
         libraries: libraries,
@@ -117,6 +119,8 @@
       'Loading...'
     );
   };
+
+  var Map = exports.Map = _Map3.default;
 
   var GoogleMapApis = exports.GoogleMapApis = function GoogleMapApis(input) {
     return function (GoogleMapApiComponent) {

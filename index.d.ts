@@ -24,45 +24,45 @@ export interface IProvidedProps {
     loaded?: boolean
 }
 
-// type mapEventHandler = (mapProps?: IMapProps, map?: google.maps.Map, event?) => any
+type mapEventHandler = (mapProps?: IMapProps, map?: google.maps.Map, event?) => any
 
-// type Style = Object<string, string | number | boolean>
+type Style = Object<string, string | number | boolean>
 
-// export interface IMapProps extends google.maps.MapOptions {
-//     google: GoogleAPI
-//     loaded?: boolean
+export interface IMapProps extends google.maps.MapOptions {
+    google: GoogleAPI
+    loaded?: boolean
 
-//     style?: Style
-//     containerStyle?: Style
+    style?: Style
+    containerStyle?: Style
 
-//     bounds?: google.maps.LatLngBounds | google.maps.LatLngBoundsLiteral
-//     centerAroundCurrentLocation?: boolean
-//     initialCenter?: google.maps.LatLngLiteral
-//     center?: google.maps.LatLngLiteral
+    bounds?: google.maps.LatLngBounds | google.maps.LatLngBoundsLiteral
+    centerAroundCurrentLocation?: boolean
+    initialCenter?: google.maps.LatLngLiteral
+    center?: google.maps.LatLngLiteral
 
-//     visible?: boolean
+    visible?: boolean
 
-//     onReady?: mapEventHandler
-//     onClick?: mapEventHandler
-//     onDragend?: mapEventHandler
-//     onRecenter?: mapEventHandler
-//     onBoundsChanged?: mapEventHandler
-//     onCenterChanged?: mapEventHandler
-//     onDblclick?: mapEventHandler
-//     onDragstart?: mapEventHandler
-//     onHeadingChange?: mapEventHandler
-//     onIdle?: mapEventHandler
-//     onMaptypeidChanged?: mapEventHandler
-//     onMousemove?: mapEventHandler
-//     onMouseover?: mapEventHandler
-//     onMouseout?: mapEventHandler
-//     onProjectionChanged?: mapEventHandler
-//     onResize?: mapEventHandler
-//     onRightclick?: mapEventHandler
-//     onTilesloaded?: mapEventHandler
-//     onTiltChanged?: mapEventHandler
-//     onZoomChanged?: mapEventHandler
-// }
+    onReady?: mapEventHandler
+    onClick?: mapEventHandler
+    onDragend?: mapEventHandler
+    onRecenter?: mapEventHandler
+    onBoundsChanged?: mapEventHandler
+    onCenterChanged?: mapEventHandler
+    onDblclick?: mapEventHandler
+    onDragstart?: mapEventHandler
+    onHeadingChange?: mapEventHandler
+    onIdle?: mapEventHandler
+    onMaptypeidChanged?: mapEventHandler
+    onMousemove?: mapEventHandler
+    onMouseover?: mapEventHandler
+    onMouseout?: mapEventHandler
+    onProjectionChanged?: mapEventHandler
+    onResize?: mapEventHandler
+    onRightclick?: mapEventHandler
+    onTilesloaded?: mapEventHandler
+    onTiltChanged?: mapEventHandler
+    onZoomChanged?: mapEventHandler
+}
 
 // type markerEventHandler = (props?: IMarkerProps, marker?: google.maps.Marker, event?) => any
 
@@ -73,9 +73,9 @@ export interface IProvidedProps {
 //     onMouseover?: markerEventHandler
 // }
 
-// export class Map extends React.Component<IMapProps, any> {
+export class Map extends React.Component<IMapProps, any> {
 
-// }
+}
 
 // export class Marker extends React.Component<IMarkerProps, any> {
 

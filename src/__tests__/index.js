@@ -1,14 +1,14 @@
 import React from 'react';
 
-import {shallow, mount, render} from 'enzyme';
-import {expect} from 'chai';
+import { shallow, mount, render } from 'enzyme';
+import { expect } from 'chai';
 import sinon from 'sinon';
 
-import {ScriptCache} from '../lib/ScriptCache'
-import GoogleMapApis from '../index'
+import { ScriptCache } from '../lib/ScriptCache'
+import GoogleMapApis, { Map } from '../index'
 
 const C = React.createClass({
-    render: function() {
+    render: function () {
         return (
             <div>Sample component</div>
         )
@@ -23,7 +23,7 @@ const createCache = (res) => (obj) => {
 
 const apiKey = 'abc-123'
 const newElement = {};
-const Wrapped = GoogleMapApis({apiKey: apiKey, createCache: createCache(newElement)})(C);
+const Wrapped = GoogleMapApis({ apiKey: apiKey, createCache: createCache(newElement) })(C);
 
 // const jsdom = require('jsdom')
 // global.document = jsdom.jsdom('', {
@@ -37,7 +37,7 @@ describe('GoogleMapApis', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Wrapped apiKey={apiKey}/>)
+        wrapper = shallow(<Wrapped apiKey={apiKey} />)
     })
 
     it('loads the component', () => {
@@ -47,7 +47,7 @@ describe('GoogleMapApis', () => {
     describe('map props', () => {
         let wrapped;
         beforeEach(() => {
-            wrapper = mount(<Wrapped apiKey={apiKey}/>)
+            wrapper = mount(<Wrapped apiKey={apiKey} />)
             wrapped = wrapper.childAt(0);
         })
 
@@ -63,8 +63,26 @@ describe('GoogleMapApis', () => {
             expect(wrapped.props().map).to.be.null;
         })
 
-        describe('onLoad', () => {})
+        describe('onLoad', () => { })
 
     })
+
+})
+
+describe('Map', () => {
+    let wrapper;
+
+    describe('google prop', () => {
+        it('explodes without a `google` prop', () => {
+            expect(() => mount(<Map />)).to.throw(Error);
+        });
+
+        it('does not explode with a `google` prop', () => {
+            expect(() => mount(
+                <Map
+                    google={global.google} />
+            )).not.to.throw(Error);
+        });
+    });
 
 })
