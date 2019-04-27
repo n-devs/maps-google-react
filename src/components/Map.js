@@ -85,7 +85,7 @@ export class Map extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.google !== this.props.loadMap) {
+    if (prevProps.google !== this.props.google) {
       this.loadMap();
     }
     if (this.props.visible !== prevProps.visible) {
@@ -118,7 +118,7 @@ export class Map extends React.Component {
   }
 
   loadMap() {
-    if (this.props && this.props.loadMap) {
+    if (this.props && this.props.google) {
       const {google} = this.props;
       const maps = google.maps;
 
@@ -127,7 +127,7 @@ export class Map extends React.Component {
       const curr = this.state.currentLocation;
       const center = new maps.LatLng(curr.lat, curr.lng);
 
-      const mapTypeIds = this.props.loadMap.maps.MapTypeId || {};
+      const mapTypeIds = this.props.google.maps.MapTypeId || {};
       const mapTypeFromProps = String(this.props.mapType).toUpperCase();
 
       const mapConfig = Object.assign(
@@ -230,7 +230,7 @@ export class Map extends React.Component {
       if (!c) return;
       return React.cloneElement(c, {
         map: this.map,
-        google: this.props.loadMap,
+        google: this.props.google,
         mapCenter: this.state.currentLocation
       });
     });
@@ -259,7 +259,7 @@ export class Map extends React.Component {
 }
 
 Map.propTypes = {
-  loadMap: PropTypes.object,
+  google: PropTypes.object,
   zoom: PropTypes.number,
   centerAroundCurrentLocation: PropTypes.bool,
   center: PropTypes.object,

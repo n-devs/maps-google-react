@@ -73,9 +73,9 @@ export interface IMapProps extends google.maps.MapOptions {
 //     onMouseover?: markerEventHandler
 // }
 
-export class Map extends React.Component<IMapProps, any> {
+// export class Map extends React.Component<IMapProps, any> {
 
-}
+// }
 
 // export class Marker extends React.Component<IMarkerProps, any> {
 

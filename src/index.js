@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { ScriptCache } from '../lib/ScriptCache';
 import MapApis from './lib/MapApis';
 
-import _Map from './components/Map';
+// import _Map from './components/Map';
 
 const defaultMapConfig = {};
 
@@ -36,7 +36,7 @@ const defaultCreateCache = options => {
 
 const DefaultLoadingContainer = props => <div>Loading...</div>;
 
-export const Map = _Map;
+// export const Map = _Map;
 
 export const GoogleMapApis = input => GoogleMapApiComponent => {
   class GoogleMapApi extends React.Component {
@@ -124,7 +124,7 @@ export const GoogleMapApis = input => GoogleMapApiComponent => {
       return (
         <div>
           <GoogleMapApiComponent {...props} />
-          <div ref="map" />
+          <div ref="map" id="map" />
         </div>
       );
     }
