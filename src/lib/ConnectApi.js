@@ -1,8 +1,8 @@
-export const MapApis = function(opts) {
+export const ConnectApi = function(opts) {
     opts = opts || {};
   
     if (!opts.hasOwnProperty('apiKey')) {
-      throw new Error('You must pass an apiKey to use GoogleApi');
+      throw new Error('You must pass an apiKey to use ConnectApi');
     }
   
     const apiKey = opts.apiKey;
@@ -46,4 +46,4 @@ export const MapApis = function(opts) {
     return url();
   };
   
-  export default MapApis;
+  export default ConnectApi;

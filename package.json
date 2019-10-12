@@ -1,94 +1,100 @@
 {
-  "name": "react-google-map-apis",
-  "version": "0.1.3",
-  "main": "dist/index.js",
+  "name": "maps-google-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "module": "es/index.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "build": "node ./scripts/build.js",
+    "watch": "babel ./src -d . --ignore __tests__,**/*.test.js --watch",
+    "prepare": "npm run build",
+    "prepublishOnly": "node ./scripts/build.js",
+    "push-release": "git push origin master && git push --tags",
+    "test": "jest"
+  },
   "files": [
-    "dist",
-    "index.d.ts"
+    "es",
+    "index.js",
+    "src",
+    "umd"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/npsk26/react-google-map-apis.git"
-  },
-  "types": "index.d.ts",
-  "scripts": {
-    "start": "react-scripts start",
-    "dev": "SET NODE_ENV=development ./node_modules/hjs-webpack/bin/hjs-dev-server.js",
-    "build": "SET NODE_ENV=production webpack",
-    "publish_pages": "gh-pages -d public/",
-    "lint": "eslint ./src",
-    "lintfix": "eslint ./src --fix",
-    "testonly": "SET NODE_ENV=test mocha $npm_package_options_mocha",
-    "test": "npm run lint && npm run testonly",
-    "test-watch": "npm run testonly -- --watch --watch-extensions js",
-    "prepublish": "./scripts/prepublish.sh",
-    "preversion": "./scripts/prepublish.sh"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "url": "git+https://github.com/n-psk/maps-google-react.git"
   },
   "keywords": [
-    "react",
-    "google",
-    "map",
-    "apis",
-    "react-map",
+    "maps",
     "google-maps",
-    "react-google-map",
-    "google-map-react",
-    "react-google-map-apis"
+    "react",
+    "react",
+    "maps-google",
+    "maps-google-react"
   ],
-  "dependencies": {},
-  "devDependencies": {
-    "@types/googlemaps": "^3.30.19",
-    "@types/react": "^15.0.0",
-    "autoprefixer": "^6.3.6",
-    "babel-cli": "^6.7.7",
-    "babel-core": "^6.7.4",
-    "babel-eslint": "^9.0.0",
-    "babel-loader": "^8.0.5",
-    "babel-plugin-transform-es2015-modules-umd": "^6.6.5",
-    "babel-polyfill": "^6.7.4",
-    "babel-preset-es2015": "^6.6.0",
-    "babel-preset-react": "^6.5.0",
-    "babel-preset-react-hmre": "^1.1.1",
-    "babel-preset-stage-0": "^6.5.0",
-    "babel-preset-stage-2": "^6.5.0",
-    "babel-runtime": "^6.6.1",
-    "chai": "^3.5.0",
-    "chai-spies": "^0.7.1",
-    "css-loader": "^0.23.1",
-    "cssnano": "^3.5.2",
-    "dotenv": "^2.0.0",
-    "enzyme": "^2.2.0",
-    "eslint": "^2.7.0",
-    "eslint-plugin-babel": "^3.1.0",
-    "eslint-plugin-react": "^5.1.1",
-    "file-loader": "^0.8.5",
-    "gh-pages": "^1.1.0",
-    "highlight.js": "^9.3.0",
-    "history": "^3.0.0",
-    "hjs-webpack": "^8.1.0",
-    "jsdom": "^9.2.1",
-    "marked": "^0.3.17",
-    "mocha": "^2.4.5",
-    "nodemon": "^1.9.1",
-    "npm-font-open-sans": "0.0.3",
-    "postcss-loader": "^0.9.1",
-    "precss": "^1.4.0",
-    "prop-types": "^15.5.10",
-    "react": "^15.0.0",
-    "react-addons-test-utils": "^15.0.0",
-    "react-dom": "^15.0.0",
-    "react-github-fork-ribbon": "^0.5.1",
-    "react-router-dom": "^4.2.2",
-    "sinon": "^1.17.3",
-    "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
-    "webpack": "^1.13.0"
+  "author": "Nutthapat Piasangka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/n-psk/maps-google-react/issues"
+  },
+  "homepage": "https://github.com/n-psk/maps-google-react#readme",
+  "directories": {
+    "lib": "/src"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/*.test.js",
+      "!src/__tests__"
+    ],
+    "setupFiles": [
+      "<rootDir>/scripts/jest-setup.js"
+    ],
+    "setupFilesAfterEnv": [
+      "./node_modules/jest-enzyme/lib/index.js"
+    ],
+    "testURL": "http://localhost"
+  },
+  "dependencies": {
+    "clean-react-props": "^0.3.3",
+    "prop-types": "^15.7.2",
+    "react-load-script": "0.0.6"
   },
   "peerDependencies": {
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5"
+    "react": ">=15"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-dev-expression": "^0.2.2",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "babel-polyfill": "^6.26.0",
+    "coveralls": "^3.0.7",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "greenkeeper-lockfile": "^1.15.1",
+    "gzip-size": "^5.1.1",
+    "jest": "^24.9.0",
+    "jest-enzyme": "^7.1.1",
+    "jsdom": "^15.1.1",
+    "pretty-bytes": "^5.3.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-test-renderer": "^16.10.2",
+    "regenerator-runtime": "^0.13.3",
+    "rollup": "^1.23.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-uglify": "^6.0.3",
+    "sinon": "^7.5.0"
   }
 }

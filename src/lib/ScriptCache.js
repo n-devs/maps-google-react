@@ -1,13 +1,13 @@
-let counter = 0;
-let scriptMap = typeof window !== 'undefined' && window._scriptMap || new Map();
 const window = require('./windowOrGlobal');
+let scriptMap = typeof window !== 'undefined' && window._scriptMap || new Map();
+let counter = 0;
 
-export const ScriptCache = (function(global) {
+export const ScriptCache = (function (global) {
     global._scriptMap = global._scriptMap || scriptMap;
     return function ScriptCache(scripts) {
         const Cache = {}
 
-        Cache._onLoad = function(key) {
+        Cache._onLoad = function (key) {
             return (cb) => {
                 let registered = true;
 
@@ -20,7 +20,7 @@ export const ScriptCache = (function(global) {
                 if (stored) {
                     stored.promise.then(() => {
                         if (registered) {
-                          stored.error ? cb(stored.error) : cb(null, stored)
+                            stored.error ? cb(stored.error) : cb(null, stored)
                         }
 
                         return stored;
@@ -121,12 +121,12 @@ export const ScriptCache = (function(global) {
         //     return memo;
         //   }, {});
 
-        Object.keys(scripts).forEach(function(key) {
+        Object.keys(scripts).forEach(function (key) {
             const script = scripts[key];
 
             const tag = window._scriptMap.has(key) ?
-                        window._scriptMap.get(key).tag :
-                        Cache._scriptTag(key, script);
+                window._scriptMap.get(key).tag :
+                Cache._scriptTag(key, script);
 
             Cache[key] = {
                 tag: tag,
