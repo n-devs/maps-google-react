@@ -1,1 +1,12 @@
-/node_modules
+node_modules
+coverage
+es
+umd
+lib
+components
+__test__
+*.sublime-project
+*.sublime-workspace
+/*.js
+!rollup.config.js
+.env
