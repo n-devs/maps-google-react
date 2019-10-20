@@ -4,6 +4,11 @@ import json from 'rollup-plugin-json';
 import resolve from 'rollup-plugin-node-resolve';
 import { uglify } from 'rollup-plugin-uglify';
 import pkg from './package.json';
+import postcss from 'rollup-plugin-postcss';
+import postcssModules from 'postcss-modules';
+// import eslint from 'rollup-plugin-eslint';
+
+const cssExportMap = {};
 
 const config = {
   input: 'src/index.js',
@@ -33,6 +38,21 @@ const config = {
     resolve(),
     commonjs({
       include: /node_modules/,
+    }),
+    postcss({
+      modules: true,
+      plugins: [
+        postcssModules({
+          getJSON (id, exportTokens) {
+            cssExportMap[id] = exportTokens;
+          }
+        })
+      ],
+      getExportNamed: false,
+      getExport (id) {
+        return cssExportMap[id];
+      },
+      extract: true
     }),
     json(),
   ],
